@@ -1,0 +1,55 @@
+<DOCTYPE html>
+  <html>
+  <body>
+    <h1>Dice Game</h1>
+    <hr>
+    <img src="/assets/<%= @dice_values[0] %>.png" width="205" height="165">
+    <img src="/assets/<%= @dice_values[1] %>.png" width="205" height="165">
+
+    <%  dice = [1,2,3,4,5,6]
+           dices = dice.product(dice)
+           dice_values = dices.sample(1) %>
+    <% if @dice_values[2] == 7 || @dice_values[2] == 11 %>
+          <h3>YOU WIN!</h3>
+            <form action = "/dice" method = "get">
+              <input type = "hidden" name = "value1" value = <%= dice_values[0][0] %>>
+              <input type = "hidden" name = "value2" value = <%= dice_values[0][1] %>>
+              <input type = "hidden" name = "goal" value = 0 >
+              <input type = "submit" value = "Start Over">
+            </form>
+    <% elsif @dice_values[2] == 2 || @dice_values[2] == 3 || @dice_values[2] == 12 %>
+          <h3>YOU LOSE!</h3>
+            <form action = "/dice" method = "get">
+              <input type = "hidden" name = "value1" value = <%= dice_values[0][0] %>>
+              <input type = "hidden" name = "value2" value = <%= dice_values[0][1] %>>
+              <input type = "hidden" name = "goal" value = 0 >
+              <input type = "submit" value = "Start Over">
+            </form>
+    <% elsif @initial == 0 && @dice_values[0] + @dice_values[1] == @dice_values[2] %>
+          <h3>YOU WIN!</h3>
+            <form action = "/dice" method = "get">
+              <input type = "hidden" name = "value1" value = <%= dice_values[0][0] %>>
+              <input type = "hidden" name = "value2" value = <%= dice_values[0][1] %>>
+              <input type = "hidden" name = "goal" value = 0 >
+              <input type = "submit" value = "Start Over">
+            </form>
+    <% elsif @dice_values[0] + @dice_values[1] == 7 %>
+          <h3>YOU LOSE!</h3>
+            <form action = "/dice" method = "get">
+              <input type = "hidden" name = "value1" value = <%= dice_values[0][0] %>>
+              <input type = "hidden" name = "value2" value = <%= dice_values[0][1] %>>
+              <input type = "hidden" name = "goal" value = 0 >
+              <input type = "submit" value = "Start Over">
+            </form>
+    <% else %>
+          <h3>Your goal is now <%= @dice_values[2] %>!</h3>
+          <h4>Now try to get <%= @dice_values[2] %> again before you roll a 7.</h4>
+            <form action = "/dice" method = "get">
+              <input type = "hidden" name = "value1" value = <%= dice_values[0][0] %>>
+              <input type = "hidden" name = "value2" value = <%= dice_values[0][1] %>>
+              <input type = "hidden" name = "goal" value = <%= @dice_values[2] %>>
+              <input type = "submit" value = "Roll the dice">
+            </form>
+    <% end %>
+</body>
+<html>
