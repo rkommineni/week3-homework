@@ -11,3 +11,14 @@
  *= require_self
  *= require_tree .
  */
+
+.button{
+  background-color: #008000;
+  color: white;
+  width: 180px;
+  height: 40px;
+}
+
+.sans-serif{
+  font-family: Arial,Helvetica,sans-serif;
+}
