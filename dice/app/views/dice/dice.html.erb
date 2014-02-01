@@ -1,6 +1,6 @@
 <DOCTYPE html>
   <html>
-  <body>
+  <body class = "sans-serif">
     <h1>Dice Game</h1>
     <hr>
     <h2>Welcome.</h2>
@@ -9,17 +9,12 @@
       <li>Roll the dice to start the game.</li>
       <li>If your first roll is a 7 or 11, you win.</li>
       <li>If your first roll is a 2,3 or 12, you lose.</li>
-      <li>Anything else becomes your <i>goal</i>. Rool your goal again before rolling a 7, and you win. Roll a 7 instead of your goal and you lose.</li>
+      <li>Anything else becomes your <i>goal</i>. Roll your goal again before rolling a 7, and you win. Roll a 7 instead of your goal and you lose.</li>
     </ul>
 
-    <%  dice = [1,2,3,4,5,6]
-           dices = dice.product(dice)
-           dice_values = dices.sample(1) %>
     <form action = "/dice" method = "get">
-      <input type = "hidden" name = "value1" value = <%= dice_values[0][0] %>>
-      <input type = "hidden" name = "value2" value = <%= dice_values[0][1] %>>
       <input type = "hidden" name = "goal" value = 0 >
-      <input type = "submit" value = "Roll to start the game">
+      <input type = "submit" class = "button" value = "Roll to start the game!">
     </form>
 </body>
 <html>
